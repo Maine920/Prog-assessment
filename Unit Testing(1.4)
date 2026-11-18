@@ -1,0 +1,33 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class ProductTest {
+
+    @Test
+    public void GetTotalProductSales_WithValidData_ReturnsCorrectValue() {
+        String[] names = {"Cozy Nights Monarch", "Restonic Barbados", "Sealy Phuket"};
+        int[][] sales = {
+                {25, 18, 20},
+                {15, 10, 12},
+                {10, 15, 20}
+        };
+        Product product = new Product(names, sales);
+
+        int expectedTotal = 153;
+        assertEquals(expectedTotal, product.GetTotalProductsSold(), "Total product sales should match.");
+    }
+
+    @Test
+    public void GetAverageSales_WithValidData_ReturnsCorrectValue() {
+        String[] names = {"Cozy Nights Monarch", "Restonic Barbados", "Sealy Phuket"};
+        int[][] sales = {
+                {25, 18, 20},
+                {15, 10, 12},
+                {10, 15, 20}
+        };
+        Product product = new Product(names, sales);
+
+        double expectedAverage = 17.0; // 153 / 9 entries
+        assertEquals(expectedAverage, product.GetAverageProductSold(), 0.01, "Average product sales should match.");
+    }
+}
